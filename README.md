@@ -6,6 +6,8 @@ Escolha um professor, pegue os conteúdos das disciplinas, desvie dos problemas 
 
 **Jogar:** https://robsonpirescaflo.github.io/ifpi-info-team/
 
+**Tutorial — como o jogo foi construído:** https://robsonpirescaflo.github.io/ifpi-info-team/tutorial.html
+
 ## Controles
 
 | Ação | Teclado | Celular |
