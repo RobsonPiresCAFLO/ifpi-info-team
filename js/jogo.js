@@ -139,7 +139,6 @@ function irPara(nova) {
 
 // ---------- Estado da partida ----------
 let sel = 0;
-let tempoSelecao = 30;
 let selecaoConfirmada = false;
 let escolhido = -1;
 let jogo = null;
@@ -181,7 +180,7 @@ function atualizar(dt) {
 
   switch (tela) {
     case 'titulo': atualizarTitulo(); break;
-    case 'selecao': atualizarSelecao(dt); break;
+    case 'selecao': atualizarSelecao(); break;
     case 'intro': atualizarIntro(dt); break;
     case 'jogando': atualizarJogo(dt); break;
     case 'pausa': atualizarPausa(); break;
@@ -200,7 +199,6 @@ function atualizar(dt) {
 function atualizarTitulo() {
   if (tTela > 0.3 && confirmou()) {
     Som.confirmar();
-    tempoSelecao = 30;
     selecaoConfirmada = false;
     irPara('selecao');
   }
@@ -228,7 +226,7 @@ function layoutGrade() {
   return { cols, linhas, celulas };
 }
 
-function atualizarSelecao(dt) {
+function atualizarSelecao() {
   if (selecaoConfirmada) {
     if (tTela > 1.4) novaPartida();
     return;
@@ -259,8 +257,7 @@ function atualizarSelecao(dt) {
   if (clicouEm(BOTAO_ESCOLHER.x, BOTAO_ESCOLHER.y, BOTAO_ESCOLHER.w, BOTAO_ESCOLHER.h)) confirmar = true;   // botão "ESCOLHER"
   if (sel !== antes) Som.mover();
 
-  tempoSelecao -= dt;
-  if (confirmar || tempoSelecao <= 0) {
+  if (confirmar) {
     escolhido = sel;
     selecaoConfirmada = true;
     tTela = 0;
@@ -465,7 +462,6 @@ function atualizarFaseConcluida(dt) {
 function atualizarPausa() {
   if (apertou(['KeyQ'])) {
     selecaoConfirmada = false;
-    tempoSelecao = 30;
     irPara('selecao');
   } else if (apertou(['Escape', 'KeyP', 'Enter', 'NumpadEnter']) || (cliques.length && tTela > 0.2)) {
     irPara('jogando');
@@ -881,10 +877,6 @@ function desenharSelecao(dt) {
   desenharPetalas(dt, 0.5);
 
   texto('ESCOLHA SEU PROFESSOR', W / 2, 62, { tam: 56, fonte: FONTE_TITULO, alinha: 'center', cor: gradiente(20, 62, [[0, '#fff6a8'], [1, '#ffb703']]), contorno: '#1a0b3b', espessura: 10 });
-
-  // cronômetro
-  const seg = Math.max(0, Math.ceil(tempoSelecao));
-  texto(String(seg).padStart(2, '0'), W - 40, 66, { tam: 56, fonte: FONTE_TITULO, alinha: 'right', cor: seg <= 5 && pisca(3) ? '#ff2d55' : '#fff' });
 
   // retrato grande do professor em foco
   const img = imgProf[sel];
