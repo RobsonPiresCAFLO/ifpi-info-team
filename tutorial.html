@@ -9,6 +9,13 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bangers&family=M+PLUS+Rounded+1c:wght@400;500;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+  <script>
+    (() => {
+      let tema = null;
+      try { tema = localStorage.getItem('ifpi-tutorial-tema'); } catch { /* sem storage */ }
+      if (tema === 'light' || tema === 'dark') document.documentElement.dataset.theme = tema;
+    })();
+  </script>
   <style>
     :root {
       --fundo: #120b2e;
@@ -25,6 +32,52 @@
       --codigo: #0f0a24;
       --raio: 16px;
       --largura: 1180px;
+      --titulo: #ffffff;
+      --destaque: #ffd166;
+      --link: #7dd3fc;
+      --sombra-titulo: #1a0b3b;
+      --topo: rgba(18, 11, 46, 0.88);
+      --chip: #2c2066;
+      --chip-texto: #ffe3a3;
+      --hover: rgba(255, 255, 255, 0.04);
+      --heroi: radial-gradient(ellipse at 70% 20%, rgba(255, 61, 127, 0.25), transparent 60%),
+               radial-gradient(ellipse at 10% 80%, rgba(74, 222, 128, 0.12), transparent 50%),
+               linear-gradient(180deg, #1a1045, #120b2e);
+      --h1: linear-gradient(180deg, #fff6a8, #ffb703 50%, #ff5d8f);
+      --verde-texto: #7dffb3;
+      --rosa-texto: #ffb3c8;
+      --azul-texto: #7dd3fc;
+      --painel-escuro: #1b1242;
+      --painel-escuro-borda: #3a2b7a;
+      --painel-escuro-texto: #b9b1e0;
+      color-scheme: dark;
+    }
+    /* Tema claro: segue o sistema, a menos que o visitante escolha o escuro no botão */
+    @media (prefers-color-scheme: light) {
+      :root:not([data-theme="dark"]) {
+        --fundo: #fbf8ff; --fundo-2: #f3edff; --cartao: #ffffff; --cartao-borda: #e2d9f7;
+        --texto: #241a45; --texto-suave: #5d5285; --amarelo: #b45309; --titulo: #1a1040;
+        --destaque: #b45309; --link: #0369a1; --sombra-titulo: transparent; --topo: rgba(251, 248, 255, 0.9);
+        --chip: #f1eafe; --chip-texto: #7c2d12; --hover: rgba(58, 12, 163, 0.05);
+        --heroi: radial-gradient(ellipse at 70% 20%, rgba(255, 61, 127, 0.14), transparent 60%),
+                 radial-gradient(ellipse at 10% 80%, rgba(74, 222, 128, 0.12), transparent 50%),
+                 linear-gradient(180deg, #f1e9ff, #fbf8ff);
+        --h1: linear-gradient(180deg, #f59e0b, #e11d74 70%);
+        --verde-texto: #047857; --rosa-texto: #be185d; --azul-texto: #0369a1;
+        color-scheme: light;
+      }
+    }
+    :root[data-theme="light"] {
+      --fundo: #fbf8ff; --fundo-2: #f3edff; --cartao: #ffffff; --cartao-borda: #e2d9f7;
+      --texto: #241a45; --texto-suave: #5d5285; --amarelo: #b45309; --titulo: #1a1040;
+      --destaque: #b45309; --link: #0369a1; --sombra-titulo: transparent; --topo: rgba(251, 248, 255, 0.9);
+      --chip: #f1eafe; --chip-texto: #7c2d12; --hover: rgba(58, 12, 163, 0.05);
+      --heroi: radial-gradient(ellipse at 70% 20%, rgba(255, 61, 127, 0.14), transparent 60%),
+               radial-gradient(ellipse at 10% 80%, rgba(74, 222, 128, 0.12), transparent 50%),
+               linear-gradient(180deg, #f1e9ff, #fbf8ff);
+      --h1: linear-gradient(180deg, #f59e0b, #e11d74 70%);
+      --verde-texto: #047857; --rosa-texto: #be185d; --azul-texto: #0369a1;
+      color-scheme: light;
     }
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; scroll-padding-top: 80px; }
@@ -34,19 +87,20 @@
       color: var(--texto);
       font: 400 17px/1.7 "M PLUS Rounded 1c", system-ui, sans-serif;
     }
-    a { color: var(--azul); }
+    a { color: var(--link); }
+    body, .cartao, .barra-topo, .tabela { transition: background-color .25s, color .25s, border-color .25s; }
     img { max-width: 100%; display: block; }
     h1, h2, h3 { font-family: Bangers, Impact, sans-serif; letter-spacing: 0.02em; font-weight: 400; line-height: 1.1; }
-    h2 { font-size: clamp(34px, 5vw, 48px); color: var(--amarelo); margin: 0 0 12px; text-shadow: 3px 3px 0 #1a0b3b; }
-    h3 { font-size: 28px; color: #fff; margin: 32px 0 8px; }
+    h2 { font-size: clamp(34px, 5vw, 48px); color: var(--amarelo); margin: 0 0 12px; text-shadow: 3px 3px 0 var(--sombra-titulo); }
+    h3 { font-size: 28px; color: var(--titulo); margin: 32px 0 8px; }
     p { margin: 0 0 14px; }
     code:not(pre code) {
       font-family: "JetBrains Mono", monospace;
       font-size: 0.88em;
-      background: #2c2066;
+      background: var(--chip);
       padding: 2px 6px;
       border-radius: 6px;
-      color: #ffe3a3;
+      color: var(--chip-texto);
     }
 
     /* ---------- Topo ---------- */
@@ -54,7 +108,7 @@
       position: sticky; top: 0; z-index: 20;
       display: flex; align-items: center; gap: 16px;
       padding: 10px 20px;
-      background: rgba(18, 11, 46, 0.88);
+      background: var(--topo);
       backdrop-filter: blur(10px);
       border-bottom: 1px solid var(--cartao-borda);
     }
@@ -72,23 +126,32 @@
       transition: transform .15s;
     }
     .botao:hover { transform: translateY(-2px); }
-    .botao.secundario { background: transparent; border-color: var(--cartao-borda); box-shadow: none; }
+    .botao.secundario { background: transparent; border-color: var(--cartao-borda); box-shadow: none; color: var(--titulo); }
+    .alternar-tema { width: 46px; height: 46px; border-radius: 50%; border: 2px solid var(--cartao-borda); background: var(--cartao); color: var(--titulo); font-size: 20px; cursor: pointer; display: grid; place-items: center; }
+    .alternar-tema:hover { border-color: var(--rosa); }
+    .alternar-tema .sol { display: none; }
+    .tema-claro .alternar-tema .sol { display: inline; }
+    .tema-claro .alternar-tema .lua { display: none; }
+    .creditos-topo { margin-top: 18px; font-size: 15px; color: var(--texto-suave); }
+    .creditos-topo strong { color: var(--titulo); }
+    .creditos { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px 28px; margin-bottom: 14px; }
+    .creditos div { background: var(--cartao); border: 1px solid var(--cartao-borda); border-radius: 12px; padding: 10px 18px; }
+    .creditos span { display: block; font-size: 12px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: var(--rosa-texto); }
+    .creditos strong { color: var(--titulo); font-size: 16px; }
 
     .heroi {
       position: relative; overflow: hidden;
       padding: 72px 20px 56px;
       background:
-        radial-gradient(ellipse at 70% 20%, rgba(255, 61, 127, 0.25), transparent 60%),
-        radial-gradient(ellipse at 10% 80%, rgba(74, 222, 128, 0.12), transparent 50%),
-        linear-gradient(180deg, #1a1045, var(--fundo));
+        var(--heroi);
     }
     .heroi-conteudo { max-width: var(--largura); margin: 0 auto; display: grid; grid-template-columns: 1.05fr 1fr; gap: 48px; align-items: center; }
-    .heroi .selo { display: inline-block; padding: 4px 14px; border-radius: 999px; background: #2c2066; color: var(--verde); font-weight: 800; font-size: 14px; letter-spacing: .06em; }
+    .heroi .selo { display: inline-block; padding: 4px 14px; border-radius: 999px; background: var(--chip); color: var(--verde-texto); font-weight: 800; font-size: 14px; letter-spacing: .06em; }
     .heroi h1 {
       font-size: clamp(52px, 8vw, 96px); margin: 12px 0 8px;
-      background: linear-gradient(180deg, #fff6a8, #ffb703 50%, #ff5d8f);
+      background: var(--h1);
       -webkit-background-clip: text; background-clip: text; color: transparent;
-      filter: drop-shadow(4px 4px 0 #1a0b3b);
+      filter: drop-shadow(4px 4px 0 var(--sombra-titulo));
     }
     .heroi p.lead { font-size: 20px; color: var(--texto-suave); max-width: 560px; }
     .heroi .acoes { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 24px; }
@@ -96,18 +159,18 @@
     .heroi figure img { border-radius: var(--raio); border: 4px solid #fff; box-shadow: 0 20px 60px rgba(0,0,0,.5), 0 0 40px rgba(255,61,127,.3); }
     .numeros { display: flex; gap: 28px; flex-wrap: wrap; margin-top: 28px; }
     .numeros div { font-size: 14px; color: var(--texto-suave); }
-    .numeros strong { display: block; font: 400 38px Bangers, sans-serif; color: #fff; letter-spacing: .03em; }
+    .numeros strong { display: block; font: 400 38px Bangers, sans-serif; color: var(--titulo); letter-spacing: .03em; }
 
     /* ---------- Layout com sumário ---------- */
     .pagina { max-width: var(--largura); margin: 0 auto; padding: 0 20px 80px; display: grid; grid-template-columns: 240px 1fr; gap: 48px; }
     nav.sumario { position: sticky; top: 80px; align-self: start; max-height: calc(100vh - 100px); overflow: auto; padding-top: 40px; scrollbar-width: thin; scrollbar-color: var(--cartao-borda) transparent; }
-    nav.sumario strong { font: 400 22px Bangers, sans-serif; color: var(--amarelo); letter-spacing: .04em; }
+    nav.sumario strong { font: 400 22px Bangers, sans-serif; color: var(--destaque); letter-spacing: .04em; }
     nav.sumario ol { list-style: none; padding: 0; margin: 10px 0 0; counter-reset: s; }
     nav.sumario li a {
       display: block; padding: 5px 10px; border-left: 3px solid transparent;
       color: var(--texto-suave); text-decoration: none; font-size: 15px;
     }
-    nav.sumario li a:hover, nav.sumario li a.ativo { color: #fff; border-left-color: var(--rosa); background: rgba(255,255,255,.04); }
+    nav.sumario li a:hover, nav.sumario li a.ativo { color: var(--titulo); border-left-color: var(--rosa); background: var(--hover); }
     nav.sumario .sub a { padding-left: 22px; font-size: 14px; }
     main { min-width: 0; }
     section { padding-top: 56px; }
@@ -117,16 +180,16 @@
     .grade { display: grid; gap: 16px; }
     .grade.g3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
     .grade.g2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-    .tec h4 { margin: 8px 0 6px; font-size: 19px; color: #fff; }
+    .tec h4 { margin: 8px 0 6px; font-size: 19px; color: var(--titulo); }
     .tec p { font-size: 15px; color: var(--texto-suave); margin: 0; }
     .tec .icone { font-size: 30px; }
-    .etiqueta { display: inline-block; font-size: 12px; font-weight: 800; letter-spacing: .05em; padding: 2px 10px; border-radius: 999px; background: rgba(125,255,179,.14); color: var(--verde); border: 1px solid rgba(125,255,179,.4); }
-    .etiqueta.rosa { background: rgba(255,61,127,.14); color: #ffb3c8; border-color: rgba(255,61,127,.4); }
-    .etiqueta.azul { background: rgba(125,211,252,.12); color: var(--azul); border-color: rgba(125,211,252,.4); }
+    .etiqueta { display: inline-block; font-size: 12px; font-weight: 800; letter-spacing: .05em; padding: 2px 10px; border-radius: 999px; background: rgba(125,255,179,.14); color: var(--verde-texto); border: 1px solid rgba(16,163,90,.4); }
+    .etiqueta.rosa { background: rgba(255,61,127,.14); color: var(--rosa-texto); border-color: rgba(255,61,127,.4); }
+    .etiqueta.azul { background: rgba(125,211,252,.12); color: var(--azul-texto); border-color: rgba(125,211,252,.4); }
 
     table { width: 100%; border-collapse: collapse; font-size: 15px; }
     th, td { text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--cartao-borda); vertical-align: top; }
-    th { color: var(--amarelo); font-weight: 800; }
+    th { color: var(--destaque); font-weight: 800; }
     .tabela { overflow-x: auto; background: var(--cartao); border: 1px solid var(--cartao-borda); border-radius: var(--raio); }
 
     /* ---------- Passos ---------- */
@@ -144,9 +207,9 @@
     .passo h3 { margin-top: 0; }
     .passo .arquivo { font-family: "JetBrains Mono", monospace; font-size: 13px; color: var(--texto-suave); }
 
-    .bloco-codigo { position: relative; margin: 14px 0 18px; border-radius: 12px; overflow: hidden; border: 1px solid var(--cartao-borda); background: var(--codigo); }
-    .bloco-codigo .cab { display: flex; justify-content: space-between; align-items: center; padding: 6px 12px; background: #1a1240; font: 600 12px "JetBrains Mono", monospace; color: var(--texto-suave); }
-    .bloco-codigo button { font: 600 12px "JetBrains Mono", monospace; background: #2c2066; color: #fff; border: 1px solid var(--cartao-borda); border-radius: 6px; padding: 3px 10px; cursor: pointer; }
+    .bloco-codigo { position: relative; margin: 14px 0 18px; border-radius: 12px; overflow: hidden; border: 1px solid var(--painel-escuro-borda); background: var(--codigo); }
+    .bloco-codigo .cab { display: flex; justify-content: space-between; align-items: center; padding: 6px 12px; background: #1a1240; font: 600 12px "JetBrains Mono", monospace; color: var(--painel-escuro-texto); }
+    .bloco-codigo button { font: 600 12px "JetBrains Mono", monospace; background: #2c2066; color: #fff; border: 1px solid var(--painel-escuro-borda); border-radius: 6px; padding: 3px 10px; cursor: pointer; }
     .bloco-codigo pre { margin: 0; overflow-x: auto; }
     .bloco-codigo pre code.hljs { background: transparent; padding: 14px 16px; font: 400 13.5px/1.6 "JetBrains Mono", monospace; font-variant-ligatures: none; font-feature-settings: "liga" 0, "calt" 0; }
     code, .leitura { font-variant-ligatures: none; font-feature-settings: "liga" 0, "calt" 0; }
@@ -154,7 +217,9 @@
     .dica, .atencao { border-radius: 12px; padding: 14px 18px; margin: 14px 0; font-size: 15.5px; max-width: 760px; }
     .dica { background: rgba(125,255,179,.08); border-left: 4px solid var(--verde); }
     .atencao { background: rgba(255,209,102,.08); border-left: 4px solid var(--amarelo); }
-    .dica strong, .atencao strong { color: #fff; }
+    .dica strong, .atencao strong { color: var(--titulo); }
+    .tema-claro .dica { background: rgba(16,163,90,.08); border-left-color: #10a35a; }
+    .tema-claro .atencao { background: rgba(245,158,11,.1); border-left-color: #d97706; }
 
     figure.captura { margin: 16px 0; }
     figure.captura img { border-radius: 12px; border: 2px solid var(--cartao-borda); }
@@ -163,18 +228,18 @@
     .antes-depois figure { margin: 0; position: relative; }
     .antes-depois .rotulo { position: absolute; top: 10px; left: 10px; font: 400 20px Bangers, sans-serif; padding: 2px 12px; border-radius: 8px; background: rgba(0,0,0,.65); }
 
-    .diagrama { background: var(--cartao); border: 1px solid var(--cartao-borda); border-radius: var(--raio); padding: 16px; margin: 16px 0; overflow-x: auto; }
+    .diagrama { background: var(--painel-escuro); border: 1px solid var(--painel-escuro-borda); border-radius: var(--raio); padding: 16px; margin: 16px 0; overflow-x: auto; }
     .diagrama svg { display: block; width: 100%; height: auto; min-width: 560px; }
     .diagrama svg text { font-family: "M PLUS Rounded 1c", sans-serif; }
 
     /* ---------- Demonstrações interativas ---------- */
     .demo { background: var(--cartao); border: 2px solid var(--rosa); border-radius: var(--raio); padding: 18px; margin: 18px 0; }
-    .demo .titulo-demo { font: 400 24px Bangers, sans-serif; color: var(--rosa); letter-spacing: .04em; }
+    .demo .titulo-demo { font: 400 24px Bangers, sans-serif; color: var(--rosa-texto); letter-spacing: .04em; }
     .demo canvas { width: 100%; height: auto; display: block; border-radius: 10px; background: #0d0826; touch-action: none; cursor: pointer; }
     .controles { display: flex; flex-wrap: wrap; gap: 18px; margin-top: 12px; font-size: 14px; align-items: center; }
     .controles label { display: flex; align-items: center; gap: 8px; }
     .controles input[type=range] { accent-color: var(--rosa); }
-    .controles output { font-family: "JetBrains Mono", monospace; color: var(--amarelo); min-width: 48px; }
+    .controles output { font-family: "JetBrains Mono", monospace; color: var(--destaque); min-width: 48px; }
     .leitura { font-family: "JetBrains Mono", monospace; font-size: 13px; color: var(--texto-suave); margin-top: 8px; }
 
     .exercicios li { margin-bottom: 10px; }
@@ -200,6 +265,7 @@
 <header class="barra-topo">
   <a class="marca" href="#"><span>IFPI</span> Info Team · Tutorial</a>
   <div class="acoes">
+    <button class="alternar-tema" type="button" id="alternarTema" aria-label="Alternar tema claro/escuro" title="Alternar tema claro/escuro"><span class="lua">🌙</span><span class="sol">☀️</span></button>
     <a class="botao secundario" href="https://github.com/RobsonPiresCAFLO/ifpi-info-team">Código</a>
     <a class="botao" href="index.html">Jogar ▶</a>
   </div>
@@ -221,6 +287,7 @@
         <div><strong>~1.700</strong>linhas de código</div>
         <div><strong>0</strong>arquivos de áudio</div>
       </div>
+      <p class="creditos-topo">Autor: <strong>prof. Me. Robson Pires Borges</strong> · Coautoria: <strong>Inteligência Artificial (Claude, Anthropic)</strong></p>
     </div>
     <figure><img src="assets/tutorial/jogo.jpg" alt="Tela do jogo: professor em estilo anime pegando palavras de conteúdo que caem do céu" width="960" height="540"></figure>
   </div>
@@ -913,6 +980,10 @@ gh api -X POST repos/USUARIO/ifpi-info-team/pages -f "source[branch]=main" -f "s
 </div>
 
 <footer>
+  <div class="creditos">
+    <div><span>Autor</span><strong>prof. Me. Robson Pires Borges</strong></div>
+    <div><span>Coautoria</span><strong>Inteligência Artificial · Claude (Anthropic)</strong></div>
+  </div>
   IFPI Info Team · Quadro de Professores de Informática · IFPI Campus Floriano<br>
   <a href="index.html">Jogar</a> · <a href="https://github.com/RobsonPiresCAFLO/ifpi-info-team">Código no GitHub</a>
 </footer>
@@ -949,6 +1020,20 @@ document.querySelectorAll('.bloco-codigo').forEach((bloco) => {
     }
     setTimeout(() => { botao.textContent = 'copiar'; }, 1500);
   });
+});
+
+// ---------- Tema claro/escuro ----------
+const raiz = document.documentElement;
+const sistemaClaro = matchMedia('(prefers-color-scheme: light)');
+const temaAtual = () => raiz.dataset.theme || (sistemaClaro.matches ? 'light' : 'dark');
+const aplicarClasse = () => raiz.classList.toggle('tema-claro', temaAtual() === 'light');
+aplicarClasse();
+sistemaClaro.addEventListener('change', aplicarClasse);
+document.getElementById('alternarTema').addEventListener('click', () => {
+  const novo = temaAtual() === 'light' ? 'dark' : 'light';
+  raiz.dataset.theme = novo;
+  try { localStorage.setItem('ifpi-tutorial-tema', novo); } catch { /* sem storage */ }
+  aplicarClasse();
 });
 
 // ---------- Sumário: destaca a seção visível ----------
