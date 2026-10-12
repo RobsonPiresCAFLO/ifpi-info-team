@@ -327,7 +327,7 @@
     <!-- ============================================================ -->
     <section id="visao-geral">
       <h2>1. Visão geral</h2>
-      <p>O jogo funciona como um fliperama clássico. O jogador escolhe um professor, entra em uma fase ambientada na escola e precisa <strong>pegar os conteúdos das disciplinas</strong> (etiquetas verdes) enquanto <strong>desvia dos problemas</strong> (etiquetas vermelhas, como <code>BUG</code> e <code>Erro 404</code>). Quando a barra de <em>Conhecimento</em> enche, ele passa de fase. São cinco fases, e o jogo termina mostrando o quadro completo de professores.</p>
+      <p>O jogo funciona como um fliperama clássico. O jogador escolhe um professor, entra em uma fase ambientada na escola e precisa <strong>pegar os conteúdos das disciplinas</strong> (etiquetas verdes) enquanto <strong>desvia dos problemas</strong> (etiquetas vermelhas, como <code>BUG</code> e <code>Erro 404</code>). Quando a barra de <em>Conhecimento</em> enche, ele passa de fase. São seis fases, e o jogo termina mostrando o quadro completo de professores.</p>
       <div class="grade g3">
         <figure class="captura"><img src="assets/tutorial/titulo.jpg" alt="Tela de título" loading="lazy"><figcaption>Tela de título</figcaption></figure>
         <figure class="captura"><img src="assets/tutorial/selecao.jpg" alt="Tela de seleção de professor" loading="lazy"><figcaption>Seleção com painel de habilidades</figcaption></figure>
@@ -347,7 +347,7 @@
         <div class="cartao tec"><div class="icone">🎨</div><h4>Canvas 2D</h4><p>API de desenho do navegador. Todas as telas, personagens, barras e efeitos são desenhados com ela, 60 vezes por segundo.</p></div>
         <div class="cartao tec"><div class="icone">⚡</div><h4>JavaScript (ES2020+)</h4><p>Lógica do jogo sem frameworks: objetos, arrays, <code>Set</code>, <code>Map</code>, arrow functions, <code>async/await</code>.</p></div>
         <div class="cartao tec"><div class="icone">🔊</div><h4>Web Audio API</h4><p>Música e efeitos gerados por osciladores em tempo real. Não existe nenhum arquivo .mp3 no projeto.</p></div>
-        <div class="cartao tec"><div class="icone">🤖</div><h4>Python + IA (AnimeGAN)</h4><p>Redes neurais transformaram as fotos dos professores e da escola em ilustrações no estilo anime.</p></div>
+        <div class="cartao tec"><div class="icone">🤖</div><h4>IA generativa de imagens</h4><p>Na versão 1, redes AnimeGAN em Python transformaram as fotos em anime. Na versão 2, retratos e cenários foram refeitos com arte mais refinada, em estilo mangá.</p></div>
         <div class="cartao tec"><div class="icone">🔤</div><h4>Google Fonts</h4><p><em>Bangers</em> nos títulos, com cara de mangá, e <em>M PLUS Rounded 1c</em> nos textos.</p></div>
         <div class="cartao tec"><div class="icone">💾</div><h4>localStorage</h4><p>Guarda o recorde e a preferência de som no próprio navegador.</p></div>
         <div class="cartao tec"><div class="icone">🧪</div><h4>Chrome Headless</h4><p>Testes automáticos: um script abre o jogo sem janela, aperta teclas e tira capturas de tela.</p></div>
@@ -474,7 +474,7 @@
           </g>
           <g font-size="11.5" fill="#b9b1e0" text-anchor="middle">
             <text x="555" y="112">vitória → próxima fase</text>
-            <text x="880" y="92">5ª fase</text>
+            <text x="880" y="92">6ª fase</text>
             <text x="440" y="176" text-anchor="end">vida 0 ou tempo 0</text>
             <text x="260" y="130">ENTER</text>
             <text x="40" y="200">10 s</text>
@@ -492,8 +492,9 @@
 │   ├── audio.js          ← música e efeitos sintetizados
 │   └── jogo.js           ← motor do jogo
 └── assets/
-    ├── professores/      ← retratos em estilo anime (512×680)
-    └── cenarios/         ← fotos da escola em estilo anime</script></div>
+    ├── professores/      ← retratos em estilo mangá (600×800, JPG)
+    ├── cenarios/temp/    ← cenários do campus em estilo anime
+    └── tutorial/         ← imagens desta página</script></div>
     </section>
 
     <!-- ============================================================ -->
@@ -505,7 +506,7 @@
 
         <!-- 1 -->
         <div class="passo" id="p-imagens">
-          <h3>Transformar as fotos em anime com IA</h3>
+          <h3>Transformar as fotos em anime com IA (versão 1)</h3>
           <p class="arquivo">Python · PyTorch · onnxruntime</p>
           <p>A ideia era ter um visual de anime, sem pixel art. Um filtro comum de "desenho" não bastava, então usamos duas <strong>redes neurais generativas (GANs)</strong> já treinadas:</p>
           <ul>
@@ -534,7 +535,24 @@ with torch.no_grad():                                     # só inferência, sem
 
 y = ((y + 1) * 127.5).permute(1, 2, 0).byte().numpy()     # volta para 0..255
 Image.fromarray(y).save('assets/professores/fulano.jpg')</script></div>
-          <div class="atencao"><strong>Privacidade:</strong> as fotos originais e a planilha de horários <em>não</em> foram publicadas no site. Só as versões em anime vão para o repositório. Antes de publicar imagens de pessoas, peça autorização.</div>
+          <h4 style="margin-top:22px">Versão 2: arte refinada em estilo mangá</h4>
+          <p>Na segunda versão do jogo, os 14 retratos e os cenários foram refeitos com <strong>IA generativa de imagens</strong>. O traço ficou mais limpo, as cores mais vivas e os rostos mais fiéis às fotos. O campus também ganhou novos ambientes (Entrada, Área Verde, Garagem e Bloco J), e o jogo passou de cinco para <strong>seis fases</strong>.</p>
+          <div class="antes-depois">
+            <figure><img src="assets/tutorial/retrato-v1.jpg" alt="Retrato na versão 1, convertido com AnimeGAN" loading="lazy"><span class="rotulo">VERSÃO 1</span></figure>
+            <figure><img src="assets/tutorial/retrato-v2.jpg" alt="O mesmo professor na versão 2, em estilo mangá" loading="lazy"><span class="rotulo" style="color:var(--amarelo)">VERSÃO 2</span></figure>
+            <figure><img src="assets/tutorial/cenario-v1.jpg" alt="Estacionamento na versão 1" loading="lazy"><span class="rotulo">VERSÃO 1</span></figure>
+            <figure><img src="assets/tutorial/cenario-v2.jpg" alt="Estacionamento na versão 2, com mais detalhes" loading="lazy"><span class="rotulo" style="color:var(--amarelo)">VERSÃO 2</span></figure>
+          </div>
+          <p style="margin-top:14px">As imagens novas saíram em alta resolução (PNG de 1086×1448, cerca de 2 MB cada), pesadas demais para a web. Como o maior retrato aparece com 270×330 pixels no jogo, um pequeno script com <strong>Pillow</strong> reduz e recomprime tudo para JPG. O total caiu de ~32 MB para ~2,4 MB, e o jogo abre rápido até no celular:</p>
+          <div class="bloco-codigo" data-lang="python" data-titulo="comprimir.py"><script type="text/x-codigo">import glob
+from PIL import Image
+
+for arquivo in glob.glob('assets/professores/*_manga.png'):
+    img = Image.open(arquivo).convert('RGB')               # JPG não tem transparência
+    img = img.resize((600, 800), Image.LANCZOS)            # 2× o maior tamanho exibido
+    img.save(arquivo[:-4] + '.jpg', 'JPEG', quality=84, optimize=True, progressive=True)</script></div>
+          <div class="dica"><strong>Mesma proporção, zero código novo:</strong> os retratos novos mantêm a proporção 3:4 dos antigos. Por isso a função que recorta o rosto (<code>rosto(img)</code>), baseada em porcentagens da largura e da altura, continuou funcionando sem nenhuma alteração. Bastou trocar os caminhos em <code>dados.js</code>.</div>
+          <div class="atencao"><strong>Privacidade:</strong> as fotos originais, as versões em alta resolução e a planilha de horários <em>não</em> foram publicadas no site. Só as versões finais vão para o repositório. Antes de publicar imagens de pessoas, peça autorização.</div>
         </div>
 
         <!-- 2 -->
@@ -656,7 +674,7 @@ function atualizar(dt) {
           <div class="bloco-codigo" data-lang="javascript" data-titulo="js/dados.js"><script type="text/x-codigo">const PROFESSORES = [
   {
     nome: 'Justino',
-    foto: 'assets/professores/justino.jpg',
+    foto: 'assets/professores/Justino_manga.jpg',
     cor: '#2ec4b6',
     titulo: 'O Senhor dos Dados',
     habilidades: [
@@ -669,8 +687,8 @@ function atualizar(dt) {
 ];
 
 const FASES = [
-  { nome: 'Área Externa', subtitulo: 'Primeiro dia de aula', fundo: 'assets/cenarios/area-externa.jpg' },
-  // ...
+  { nome: 'Entrada', subtitulo: 'Primeiro dia de aula', fundo: 'assets/cenarios/temp/entrada.jpg' },
+  // ... mais 5 fases
 ];</script></div>
           <div class="dica"><strong>Boa prática:</strong> se chegar um professor novo, basta acrescentar um objeto ao array. A grade de seleção calcula sozinha quantas linhas e colunas precisa.</div>
         </div>
@@ -886,17 +904,17 @@ pegar: (combo) => {
         <div class="passo" id="p-fases">
           <h3>Fases e curva de dificuldade</h3>
           <p class="arquivo">js/jogo.js</p>
-          <p>Cada fase usa um cenário da escola e aumenta a dificuldade de forma gradual e previsível, com fórmulas lineares baseadas no número da fase <code>f</code> (0 a 4):</p>
+          <p>Cada fase usa um cenário da escola e aumenta a dificuldade de forma gradual e previsível, com fórmulas lineares baseadas no número da fase <code>f</code> (0 a 5):</p>
           <div class="tabela">
             <table>
-              <thead><tr><th>Parâmetro</th><th>Fórmula</th><th>Fase 1</th><th>Fase 5</th></tr></thead>
+              <thead><tr><th>Parâmetro</th><th>Fórmula</th><th>Fase 1</th><th>Fase 6</th></tr></thead>
               <tbody>
-                <tr><td>Intervalo entre itens</td><td><code>max(0.35, 0.85 − 0.1·f)</code> s</td><td>0,85 s</td><td>0,45 s</td></tr>
-                <tr><td>Chance de problema</td><td><code>min(0.55, 0.3 + 0.06·f)</code></td><td>30%</td><td>54%</td></tr>
-                <tr><td>Velocidade de queda</td><td><code>120…180 + 35·f</code> px/s</td><td>~150</td><td>~290</td></tr>
-                <tr><td>Conhecimento por acerto</td><td><code>7 − 0,5·f</code> %</td><td>7%</td><td>5%</td></tr>
-                <tr><td>Dano de um problema</td><td><code>18 + 2·f</code></td><td>18</td><td>26</td></tr>
-                <tr><td>Itens em zigue-zague</td><td>a partir da fase 3</td><td>—</td><td>~52%</td></tr>
+                <tr><td>Intervalo entre itens</td><td><code>max(0.35, 0.85 − 0.1·f)</code> s</td><td>0,85 s</td><td>0,35 s</td></tr>
+                <tr><td>Chance de problema</td><td><code>min(0.55, 0.3 + 0.06·f)</code></td><td>30%</td><td>55%</td></tr>
+                <tr><td>Velocidade de queda</td><td><code>120…180 + 35·f</code> px/s</td><td>~150</td><td>~325</td></tr>
+                <tr><td>Conhecimento por acerto</td><td><code>7 − 0,5·f</code> %</td><td>7%</td><td>4,5%</td></tr>
+                <tr><td>Dano de um problema</td><td><code>18 + 2·f</code></td><td>18</td><td>28</td></tr>
+                <tr><td>Itens em zigue-zague</td><td>a partir da fase 3</td><td>—</td><td>60%</td></tr>
               </tbody>
             </table>
           </div>
