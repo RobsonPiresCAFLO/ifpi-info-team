@@ -1,7 +1,7 @@
 'use strict';
 
 // ============================================================
-//  IFPI INFO TEAM — jogo arcade do quadro de professores
+//  IFPI FLORIANO INFO TEAM — jogo arcade do quadro de professores
 // ============================================================
 
 const W = 1280, H = 720;           // resolução lógica (tudo é desenhado nesta escala)
@@ -854,7 +854,7 @@ function desenharTitulo(dt) {
   ctx.translate(W / 2, 170);
   ctx.scale(0.6 + entrada * 0.4, 0.6 + entrada * 0.4);
   ctx.globalAlpha = entrada;
-  texto('IFPI', 0, -70, { tam: 56, fonte: FONTE_TITULO, alinha: 'center', cor: '#4ade80', contorno: '#0b3d20', espessura: 10 });
+  texto('IFPI FLORIANO', 0, -70, { tam: 56, fonte: FONTE_TITULO, alinha: 'center', cor: '#4ade80', contorno: '#0b3d20', espessura: 10 });
   const brilho = gradiente(-60, 40, [[0, '#fff6a8'], [0.5, '#ffb703'], [1, '#ff5d8f']]);
   texto('INFO TEAM', 0, 60, { tam: 150, fonte: FONTE_TITULO, alinha: 'center', cor: brilho, contorno: '#1a0b3b', espessura: 18 });
   texto('Quadro de Professores • Técnico e Graduação em TI', 0, 118, { tam: 24, alinha: 'center', cor: '#ffffff' });
@@ -1307,7 +1307,7 @@ function desenharFinal(dt) {
   const a = suave(limitar((t - 5) / 0.8, 0, 1));
   ctx.globalAlpha = a;
   texto('QUADRO DE PROFESSORES', W / 2, 70, { tam: 64, fonte: FONTE_TITULO, alinha: 'center', cor: gradiente(20, 70, [[0, '#fff6a8'], [1, '#ffb703']]), contorno: '#1a0b3b', espessura: 10 });
-  texto('Informática • IFPI', W / 2, 106, { tam: 22, alinha: 'center', cor: '#ffc2d4' });
+  texto('Informática • IFPI Campus Floriano', W / 2, 106, { tam: 22, alinha: 'center', cor: '#ffc2d4' });
   const n = PROFESSORES.length;
   // até 14 professores: 2 linhas de 7; acima disso, 2 linhas com retratos menores
   const cols = n <= 14 ? Math.min(7, n) : Math.ceil(n / 2), linhasG = Math.ceil(n / cols);

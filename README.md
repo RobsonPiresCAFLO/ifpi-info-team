@@ -1,6 +1,6 @@
-# IFPI Info Team
+# IFPI Floriano Info Team
 
-Jogo arcade para apresentar o quadro de professores de Informática do IFPI (Técnico e Graduação em TI).
+Jogo arcade para apresentar o quadro de professores de Informática do IFPI Campus Floriano (Técnico e Graduação em TI).
 
 Escolha um professor, pegue os conteúdos das disciplinas, desvie dos problemas e encha a barra de **Conhecimento** para passar pelas 5 fases, que se passam em ambientes da escola.
 
