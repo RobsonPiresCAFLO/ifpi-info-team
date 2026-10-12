@@ -213,7 +213,7 @@ const BOTAO_ESCOLHER = { x: 1000, y: 560, w: 240, h: 64 };
 
 function layoutGrade() {
   const n = PROFESSORES.length;
-  const linhas = n <= 8 ? 1 : n <= 18 ? 2 : 3;
+  const linhas = n <= 8 ? 1 : n <= 20 ? 2 : 3;
   const cols = Math.ceil(n / linhas);
   const gap = 10;
   const areaW = 1200, areaH = 228;

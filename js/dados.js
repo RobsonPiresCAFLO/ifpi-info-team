@@ -62,6 +62,17 @@ const PROFESSORES = [
     disciplinas: ['Sistemas Operacionais', 'Processos', 'Threads', 'Escalonamento', 'Memória', 'IHC', 'Usabilidade', 'Protótipo', 'Projeto Integrador'],
   },
   {
+    nome: 'Jair Freitas', foto: 'assets/professores/Jair Freitas_manga.jpg', cor: '#8d0801',
+    titulo: 'O Filósofo da Informação',
+    habilidades: [
+      'Filosofia: pensamento crítico antes de qualquer linha de código',
+      'Responsabilidade Social: tecnologia a serviço das pessoas',
+      'Ética e Profissionalismo: competências para o mercado de trabalho',
+      'Golpe especial: “Informação é Poder” — e poder exige responsabilidade',
+    ],
+    disciplinas: ['Ética', 'Filosofia', 'Pensamento Crítico', 'Responsabilidade Social', 'Profissionalismo', 'Competências', 'Mercado de Trabalho', 'Informação', 'Cidadania', 'Sociedade'],
+  },
+  {
     nome: 'Justino', foto: 'assets/professores/Justino_manga.jpg', cor: '#2ec4b6',
     titulo: 'O Senhor dos Dados',
     habilidades: [
@@ -190,6 +201,17 @@ const PROFESSORES = [
       'Infraestrutura Computacional e Suporte Técnico sempre de prontidão',
     ],
     disciplinas: ['Firewall', 'Criptografia', 'Backup', 'Antivírus', 'Senha Forte', 'Hardware', 'Placa-mãe', 'Formatação', 'Suporte'],
+  },
+  {
+    nome: 'Taianni', foto: 'assets/professores/Taianni_manga.jpg', cor: '#9d4edd',
+    titulo: 'A Guardiã das Palavras',
+    habilidades: [
+      'Língua Portuguesa: escrita clara, coesa e sem erros',
+      'Documentação de Sistemas: manuais que o usuário realmente entende',
+      'Interpretação de Requisitos: lê nas entrelinhas o que o cliente quer',
+      'Golpe especial: “Revisão Final” — nenhuma vírgula fora do lugar',
+    ],
+    disciplinas: ['Gramática', 'Coesão', 'Coerência', 'Redação', 'Manual do Usuário', 'Documentação', 'Requisitos', 'Interpretação', 'Ortografia', 'Concordância'],
   },
   {
     nome: 'Vanessa Veloso', foto: 'assets/professores/Vanessa Veloso_manga.jpg', cor: '#ff8fab',
