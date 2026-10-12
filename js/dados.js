@@ -19,7 +19,7 @@
  */
 const PROFESSORES = [
   {
-    nome: 'André Castro', foto: 'assets/professores/andre-castro.jpg', cor: '#ff6b35',
+    nome: 'André Castro', foto: 'assets/professores/André Castro_manga.jpg', cor: '#ff6b35',
     titulo: 'O Arquiteto das Estruturas',
     habilidades: [
       'Estrutura de Dados I e II: empilha, enfileira e balanceia árvores sem suar',
@@ -29,7 +29,7 @@ const PROFESSORES = [
     disciplinas: ['Pilha', 'Fila', 'Lista Encadeada', 'Árvore AVL', 'Grafos', 'Hash', 'Recursão', 'Big O', 'Ordenação', 'Mat. Computacional'],
   },
   {
-    nome: 'Cicero Eduardo Walter', foto: 'assets/professores/cicero-eduardo-walter.jpg', cor: '#8d99ae',
+    nome: 'Cicero Eduardo Walter', foto: 'assets/professores/Cicero Eduardo Walter_manga.jpg', cor: '#8d99ae',
     titulo: 'O Estrategista dos Negócios',
     habilidades: [
       'Empreendedorismo: transforma qualquer ideia em plano de negócios',
@@ -40,7 +40,7 @@ const PROFESSORES = [
     disciplinas: ['Empreendedorismo', 'Ética', 'Cidadania', 'Plano de Negócios', 'Mercado', 'Produção', 'Gestão', 'Inovação', 'Carreira'],
   },
   {
-    nome: 'Elane Cristina', foto: 'assets/professores/elane-cristina.jpg', cor: '#3aa7ff',
+    nome: 'Elane Cristina', foto: 'assets/professores/Elane Cristina_manga.jpg', cor: '#3aa7ff',
     titulo: 'A Mestra da Lógica',
     habilidades: [
       'Algoritmos e Lógica de Programação: o primeiro “Olá, Mundo!” da turma',
@@ -50,7 +50,7 @@ const PROFESSORES = [
     disciplinas: ['Algoritmos', 'Lógica', 'Variáveis', 'Se / Senão', 'Laço Para', 'Enquanto', 'Vetores', 'Funções', 'Fluxograma', 'Pseudocódigo'],
   },
   {
-    nome: 'Francisco Eduardo', foto: 'assets/professores/francisco-eduardo.jpg', cor: '#e63946',
+    nome: 'Francisco Eduardo', foto: 'assets/professores/Francisco Eduardo_manga.jpg', cor: '#e63946',
     titulo: 'O Guardião do Sistema',
     habilidades: [
       'Sistemas Operacionais: domina processos, threads e escalonamento',
@@ -60,7 +60,7 @@ const PROFESSORES = [
     disciplinas: ['Sistemas Operacionais', 'Processos', 'Threads', 'Escalonamento', 'Memória', 'IHC', 'Usabilidade', 'Protótipo', 'Projeto Integrador'],
   },
   {
-    nome: 'Justino', foto: 'assets/professores/justino.jpg', cor: '#2ec4b6',
+    nome: 'Justino', foto: 'assets/professores/Justino_manga.jpg', cor: '#2ec4b6',
     titulo: 'O Senhor dos Dados',
     habilidades: [
       'Banco de Dados: invoca SELECTs e JOINs com precisão cirúrgica',
@@ -70,7 +70,7 @@ const PROFESSORES = [
     disciplinas: ['SQL', 'SELECT', 'JOIN', 'Modelo ER', 'Normalização', 'Chave Primária', 'TDD', 'Teste Unitário', 'POO', 'Herança'],
   },
   {
-    nome: 'Marcony Santana', foto: 'assets/professores/marcony-santana.jpg', cor: '#4361ee',
+    nome: 'Marcony Santana', foto: 'assets/professores/Marcony Santana_manga.jpg', cor: '#4361ee',
     titulo: 'O Senhor das Redes',
     habilidades: [
       'Redes de Computadores: conecta tudo, do cabo à nuvem',
@@ -81,7 +81,7 @@ const PROFESSORES = [
     disciplinas: ['TCP/IP', 'Modelo OSI', 'Roteador', 'Switch', 'DNS', 'HTTP', 'Endereço IP', 'CPU', 'Memória RAM', 'Extensão'],
   },
   {
-    nome: 'Rafael Leite', foto: 'assets/professores/rafael-leite.jpg', cor: '#22223b',
+    nome: 'Rafael Leite', foto: 'assets/professores/Rafael-Leite_manga.jpg', cor: '#22223b',
     titulo: 'O Visionário da Inovação',
     habilidades: [
       'Tecnologias Inovadoras: sempre um passo à frente das tendências',
@@ -92,7 +92,7 @@ const PROFESSORES = [
     disciplinas: ['Inovação', 'Startup', 'Logística', 'Processos', 'Pesquisa', 'Metodologia', 'Extensão', 'Gestão', 'Projeto'],
   },
   {
-    nome: 'Rennê', foto: 'assets/professores/renne.jpg', cor: '#6c757d',
+    nome: 'Rennê', foto: 'assets/professores/Rennê_manga.jpg', cor: '#6c757d',
     titulo: 'O Engenheiro Multiplataforma',
     habilidades: [
       'Programação para Dispositivos Móveis: apps na palma da mão',
@@ -103,7 +103,7 @@ const PROFESSORES = [
     disciplinas: ['Mobile', 'Android', 'App', 'UML', 'Requisitos', 'Casos de Uso', 'TIC', 'Planilha', 'Eng. de Software'],
   },
   {
-    nome: 'Robson Borges', foto: 'assets/professores/robson-borges.jpg', cor: '#3d348b',
+    nome: 'Robson Borges', foto: 'assets/professores/Robson Borges_manga.jpg', cor: '#3d348b',
     titulo: 'O Mestre Full Stack',
     habilidades: [
       'Programação Web Back-End: servidores, APIs e PHP sob controle',
@@ -114,7 +114,7 @@ const PROFESSORES = [
     disciplinas: ['HTML', 'CSS', 'JavaScript', 'PHP', 'API REST', 'Back-End', 'MySQL', 'Stored Procedure', 'Servidor Web', 'Redes'],
   },
   {
-    nome: 'Robson Freitas', foto: 'assets/professores/robson-freitas.jpg', cor: '#1d7874',
+    nome: 'Robson Freitas', foto: 'assets/professores/Robson Freitas_manga.jpg', cor: '#1d7874',
     titulo: 'O Treinador de Máquinas',
     habilidades: [
       'Inteligência Artificial: ensina as máquinas a pensar',
@@ -125,7 +125,7 @@ const PROFESSORES = [
     disciplinas: ['IA', 'Machine Learning', 'Rede Neural', 'Mobile', 'Front-End', 'React', 'Interface', 'Computação', 'Dataset'],
   },
   {
-    nome: 'Ronaldo Borges', foto: 'assets/professores/ronaldo-borges.jpg', cor: '#212529',
+    nome: 'Ronaldo Borges', foto: 'assets/professores/Ronaldo Borges_manga.jpg', cor: '#212529',
     titulo: 'O Mago dos Objetos',
     habilidades: [
       'Programação Orientada a Objetos: classes, herança e polimorfismo',
@@ -136,7 +136,7 @@ const PROFESSORES = [
     disciplinas: ['Classe', 'Objeto', 'Herança', 'Polimorfismo', 'Encapsulamento', 'IoT', 'Arduino', 'Sensores', 'Framework', 'Web'],
   },
   {
-    nome: 'Silvino Marques', foto: 'assets/professores/silvino-marques.jpg', cor: '#f77f00',
+    nome: 'Silvino Marques', foto: 'assets/professores/Silvino Marques_manga.jpg', cor: '#f77f00',
     titulo: 'O Escudo da Segurança',
     habilidades: [
       'Segurança da Informação: bloqueia vírus, golpes e senhas fracas',
@@ -146,7 +146,7 @@ const PROFESSORES = [
     disciplinas: ['Firewall', 'Criptografia', 'Backup', 'Antivírus', 'Senha Forte', 'Hardware', 'Placa-mãe', 'Formatação', 'Suporte'],
   },
   {
-    nome: 'Vanessa Veloso', foto: 'assets/professores/vanessa-veloso.jpg', cor: '#ff8fab',
+    nome: 'Vanessa Veloso', foto: 'assets/professores/Vanessa Veloso_manga.jpg', cor: '#ff8fab',
     titulo: 'A Arquiteta de Software',
     habilidades: [
       'Engenharia de Software I e II: do requisito à entrega',
@@ -156,7 +156,7 @@ const PROFESSORES = [
     disciplinas: ['Requisitos', 'UML', 'Scrum', 'Kanban', 'Casos de Uso', 'Diagrama de Classes', 'Sprint', 'Git', 'Qualidade'],
   },
   {
-    nome: 'Willamys Rangel', foto: 'assets/professores/willamys-rangel.jpg', cor: '#2b2d42',
+    nome: 'Willamys Rangel', foto: 'assets/professores/Willamys Rangel_manga.jpg', cor: '#2b2d42',
     titulo: 'O Explorador de Tecnologias',
     habilidades: [
       'Tópicos Especiais em Programação: sempre com a tecnologia do momento',
@@ -168,11 +168,12 @@ const PROFESSORES = [
 
 // Fases: uma por ambiente da escola, na ordem em que são jogadas.
 const FASES = [
-  { nome: 'Área Externa',   subtitulo: 'Primeiro dia de aula',  fundo: 'assets/cenarios/area-externa.jpg' },
-  { nome: 'Administração',  subtitulo: 'Matrícula e diários',   fundo: 'assets/cenarios/administracao.jpg' },
-  { nome: 'Estacionamento', subtitulo: 'Chegando em cima da hora!', fundo: 'assets/cenarios/estacionamento.jpg' },
-  { nome: 'Pátio',          subtitulo: 'Semana de provas',      fundo: 'assets/cenarios/patio.jpg' },
-  { nome: 'Auditório',      subtitulo: 'Banca de TCC',          fundo: 'assets/cenarios/auditorio.jpg' },
+  { nome: 'Entrada',        subtitulo: 'Primeiro dia de aula',      fundo: 'assets/cenarios/temp/entrada.jpg' },
+  { nome: 'Área Verde',     subtitulo: 'Intervalo entre as aulas',  fundo: 'assets/cenarios/temp/area_verde1.jpg' },
+  { nome: 'Estacionamento', subtitulo: 'Chegando em cima da hora!', fundo: 'assets/cenarios/temp/estacionamento.jpg' },
+  { nome: 'Pátio',          subtitulo: 'Semana de provas',          fundo: 'assets/cenarios/temp/estacionamento2.jpg' },
+  { nome: 'Garagem',        subtitulo: 'Visita técnica',            fundo: 'assets/cenarios/temp/garagem.jpg' },
+  { nome: 'Bloco J',        subtitulo: 'Banca de TCC ao anoitecer', fundo: 'assets/cenarios/temp/bloco_j.jpg' },
 ];
 
 // Itens bons: conteúdos dos cursos Técnico e de Graduação em TI.
