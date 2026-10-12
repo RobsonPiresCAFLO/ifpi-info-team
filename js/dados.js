@@ -9,6 +9,8 @@
  *   cor         → cor do uniforme do personagem e dos destaques
  *   titulo      → frase curta abaixo do nome (ex.: "O Mestre dos Algoritmos")
  *   habilidades → lista exibida no painel ao passar o cursor sobre o professor
+ *   rosto       → (opcional) recorte do rosto [x, y, lado] em frações da imagem,
+ *                 para fotos em que o rosto aparece pequeno. Padrão: [0.12, 0.03, 0.76]
  *   disciplinas → palavras "boas" que caem durante o jogo quando ele é escolhido.
  *                 Se ficar vazia, usa a lista geral PALAVRAS_BOAS.
  *
@@ -70,6 +72,28 @@ const PROFESSORES = [
     disciplinas: ['SQL', 'SELECT', 'JOIN', 'Modelo ER', 'Normalização', 'Chave Primária', 'TDD', 'Teste Unitário', 'POO', 'Herança'],
   },
   {
+    nome: 'Leandro Rodrigues', foto: 'assets/professores/Leandro Rodrigues_manga.jpg', cor: '#5e548e',
+    titulo: 'O Doutor da Metodologia',
+    habilidades: [
+      'Metodologia Científica: problema, objetivos e método no lugar certo',
+      'Design Science Research: projetos de TI viram artefatos com rigor científico',
+      'Administração: une gestão e tecnologia para resolver problemas reais',
+      'Doutor e PhD: orienta TCCs do problema à avaliação do artefato',
+    ],
+    disciplinas: ['Metodologia', 'Design Science', 'Artefato', 'Problema', 'Objetivos', 'Hipótese', 'Referencial Teórico', 'ABNT', 'Avaliação', 'Administração'],
+  },
+  {
+    nome: 'Magno', foto: 'assets/professores/Magno_manga.jpg', cor: '#bc6c25', rosto: [0.28, 0.02, 0.42],
+    titulo: 'O Líder Empreendedor',
+    habilidades: [
+      'Administração e Empreendedorismo: do plano de negócios à liderança',
+      'Agenda dupla: concilia a sala de aula com a vida pública da cidade',
+      'Golpe especial: “Atividade Extra” — a turma nunca fica parada',
+      'Orientação de TCC: projetos que geram impacto na comunidade',
+    ],
+    disciplinas: ['Administração', 'Empreendedorismo', 'Liderança', 'Planejamento', 'Plano de Negócios', 'Gestão Pública', 'Marketing', 'Negociação', 'Comunidade', 'Projeto'],
+  },
+  {
     nome: 'Marcony Santana', foto: 'assets/professores/Marcony Santana_manga.jpg', cor: '#4361ee',
     titulo: 'O Senhor das Redes',
     habilidades: [
@@ -79,6 +103,17 @@ const PROFESSORES = [
       'Extensão Curricular: leva a TI para a comunidade',
     ],
     disciplinas: ['TCP/IP', 'Modelo OSI', 'Roteador', 'Switch', 'DNS', 'HTTP', 'Endereço IP', 'CPU', 'Memória RAM', 'Extensão'],
+  },
+  {
+    nome: 'Paulo Ferreira', foto: 'assets/professores/Paulo Ferreira_manga.jpg', cor: '#06a77d',
+    titulo: 'O Tradutor do Código',
+    habilidades: [
+      'Inglês Técnico: decifra documentação, manuais e mensagens de erro',
+      'Mostra que todo código fala inglês: if, for, while, return',
+      'Prepara os calouros para ler em inglês desde o início do curso',
+      'Orientação de TCC: revisa o abstract e as referências internacionais',
+    ],
+    disciplinas: ['Reading', 'Vocabulary', 'Grammar', 'Cognatos', 'Skimming', 'Scanning', 'Abstract', 'Keywords', 'Documentation', 'Listening'],
   },
   {
     nome: 'Rafael Leite', foto: 'assets/professores/Rafael-Leite_manga.jpg', cor: '#22223b',
@@ -123,6 +158,17 @@ const PROFESSORES = [
       'Informática Aplicada à Eletromecânica',
     ],
     disciplinas: ['IA', 'Machine Learning', 'Rede Neural', 'Mobile', 'Front-End', 'React', 'Interface', 'Computação', 'Dataset'],
+  },
+  {
+    nome: 'Rogério Sousa', foto: 'assets/professores/Rogerio Sousa_manga.jpg', cor: '#7209b7',
+    titulo: 'O Calculista das Probabilidades',
+    habilidades: [
+      'Cálculo: limites, derivadas e integrais que viram ferramenta de programador',
+      'Estatística: média, desvio padrão e probabilidade para entender os dados',
+      'Prepara os calouros com a base matemática do início do curso',
+      'Orientação de TCC: põe números, gráficos e análise nos resultados',
+    ],
+    disciplinas: ['Limite', 'Derivada', 'Integral', 'Função', 'Média', 'Mediana', 'Desvio Padrão', 'Probabilidade', 'Amostra', 'Gráfico'],
   },
   {
     nome: 'Ronaldo Borges', foto: 'assets/professores/Ronaldo Borges_manga.jpg', cor: '#212529',

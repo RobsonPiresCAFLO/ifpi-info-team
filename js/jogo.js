@@ -56,7 +56,11 @@ function carregarImagem(src) {
     i.src = src;
   });
 }
-const rosto = (img) => [img.width * 0.12, img.height * 0.03, img.width * 0.76, img.width * 0.76];
+// recorte quadrado do rosto: [x, y, lado] em frações da largura/altura (ajustável por professor em dados.js)
+const rosto = (img) => {
+  const [x, y, lado] = img.recorteRosto || [0.12, 0.03, 0.76];
+  return [img.width * x, img.height * y, img.width * lado, img.width * lado];
+};
 
 // ---------- Entrada: teclado, mouse e toque ----------
 const teclas = new Set();
@@ -209,14 +213,14 @@ const BOTAO_ESCOLHER = { x: 1000, y: 560, w: 240, h: 64 };
 
 function layoutGrade() {
   const n = PROFESSORES.length;
-  const linhas = n <= 8 ? 1 : n <= 16 ? 2 : 3;
+  const linhas = n <= 8 ? 1 : n <= 18 ? 2 : 3;
   const cols = Math.ceil(n / linhas);
   const gap = 10;
   const areaW = 1200, areaH = 228;
   let cw = Math.min((areaW - gap * (cols - 1)) / cols, ((areaH - gap * (linhas - 1)) / linhas) * 0.75);
   const ch = cw / 0.75;
   const totalW = cols * cw + (cols - 1) * gap;
-  const x0 = (W - totalW) / 2, y0 = 440;
+  const x0 = Math.min((W - totalW) / 2, BOTAO_ESCOLHER.x - 20 - totalW), y0 = 440;   // não invade o botão
   const celulas = PROFESSORES.map((_, i) => {
     const l = Math.floor(i / cols), c = i % cols;
     const naLinha = Math.min(cols, n - l * cols);
@@ -1305,8 +1309,10 @@ function desenharFinal(dt) {
   texto('QUADRO DE PROFESSORES', W / 2, 70, { tam: 64, fonte: FONTE_TITULO, alinha: 'center', cor: gradiente(20, 70, [[0, '#fff6a8'], [1, '#ffb703']]), contorno: '#1a0b3b', espessura: 10 });
   texto('Informática • IFPI', W / 2, 106, { tam: 22, alinha: 'center', cor: '#ffc2d4' });
   const n = PROFESSORES.length;
-  const cols = Math.min(7, n), linhasG = Math.ceil(n / cols);
-  const cw = 132, ch = 176, gapX = 40, gapY = 64;
+  // até 14 professores: 2 linhas de 7; acima disso, 2 linhas com retratos menores
+  const cols = n <= 14 ? Math.min(7, n) : Math.ceil(n / 2), linhasG = Math.ceil(n / cols);
+  const gapX = cols > 7 ? 24 : 40, gapY = 64;
+  const cw = Math.min(132, Math.floor((W - 60 - (cols - 1) * gapX) / cols)), ch = Math.round(cw * 4 / 3);
   const totalW = cols * cw + (cols - 1) * gapX;
   PROFESSORES.forEach((p, i) => {
     const l = Math.floor(i / cols), c = i % cols;
@@ -1349,7 +1355,7 @@ async function iniciar() {
   ]).catch(() => {});
   const limite = new Promise((ok) => setTimeout(ok, 2500));   // não trava se estiver offline
   const [profs, fases] = await Promise.all([
-    Promise.all(PROFESSORES.map((p) => carregarImagem(p.foto))),
+    Promise.all(PROFESSORES.map((p) => carregarImagem(p.foto).then((i) => { if (i && p.rosto) i.recorteRosto = p.rosto; return i; }))),
     Promise.all(FASES.map((f) => carregarImagem(f.fundo))),
     Promise.race([fontes, limite]),
   ]);

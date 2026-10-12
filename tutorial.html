@@ -536,7 +536,7 @@ with torch.no_grad():                                     # só inferência, sem
 y = ((y + 1) * 127.5).permute(1, 2, 0).byte().numpy()     # volta para 0..255
 Image.fromarray(y).save('assets/professores/fulano.jpg')</script></div>
           <h4 style="margin-top:22px">Versão 2: arte refinada em estilo mangá</h4>
-          <p>Na segunda versão do jogo, os 14 retratos e os cenários foram refeitos com <strong>IA generativa de imagens</strong>. O traço ficou mais limpo, as cores mais vivas e os rostos mais fiéis às fotos. O campus também ganhou novos ambientes (Entrada, Área Verde, Garagem e Bloco J), e o jogo passou de cinco para <strong>seis fases</strong>.</p>
+          <p>Na segunda versão do jogo, os retratos e os cenários foram refeitos com <strong>IA generativa de imagens</strong>. O traço ficou mais limpo, as cores mais vivas e os rostos mais fiéis às fotos. O campus também ganhou novos ambientes (Entrada, Área Verde, Garagem e Bloco J), e o jogo passou de cinco para <strong>seis fases</strong>.</p>
           <div class="antes-depois">
             <figure><img src="assets/tutorial/retrato-v1.jpg" alt="Retrato na versão 1, convertido com AnimeGAN" loading="lazy"><span class="rotulo">VERSÃO 1</span></figure>
             <figure><img src="assets/tutorial/retrato-v2.jpg" alt="O mesmo professor na versão 2, em estilo mangá" loading="lazy"><span class="rotulo" style="color:var(--amarelo)">VERSÃO 2</span></figure>
@@ -683,7 +683,7 @@ function atualizar(dt) {
     ],
     disciplinas: ['SQL', 'SELECT', 'JOIN', 'Modelo ER', 'Normalização', 'TDD'],
   },
-  // ... mais 13 professores
+  // ... mais 17 professores
 ];
 
 const FASES = [
